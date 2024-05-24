@@ -26,7 +26,8 @@ return {
         "css-lsp",
         "prettier",
         "yaml-language-server",
-        "typescript-language-server"
+        "typescript-language-server",
+        "kotlin-language-server"
   		},
   	},
   },
@@ -39,7 +40,8 @@ return {
         "lua",
         "vimdoc",
         "html",
-        "css"
+        "css",
+        "kotlin",
   		},
   	},
   },

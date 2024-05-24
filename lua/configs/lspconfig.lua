@@ -38,3 +38,39 @@ lspconfig.yamlls.setup {
     },
   }
 }
+
+--[[ lspconfig.kotlin_language_server.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  cmd = {
+    '/home/sergio/Projects/clone/kotlin-language-server/server/build/install/server/bin/kotlin-language-server',
+  },
+  ft = { "kotlin", "kt" }
+} ]]
+
+lspconfig.kotlin_language_server.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  filetypes = { "kotlin", "kts" },
+  -- https://github.com/fwcd/kotlin-language-server/issues/559#issuecomment-2002050294
+  -- https://github.com/AlexandrosAlexiou/.dotfiles/blob/eab23f91aad9fcc4e5c0c65e0f4f8cf6a968f7d6/nvim/lua/tt/_plugins/lsp/config/servers.lua#L38-L40
+  root_dir = function()
+      return vim.fn.getcwd()
+  end,
+  settings = {
+    kotlin = {
+      compiler = {
+        jvm = {
+          target = "21"
+        }
+      }
+    },
+    hints = {
+      typeHints = true,
+      parameterHints = true,
+      chainedHints = true,
+    },
+  },
+}
