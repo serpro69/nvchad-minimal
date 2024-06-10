@@ -17,44 +17,53 @@ return {
   },
   --
   {
-  	"williamboman/mason.nvim",
-  	opts = {
-  		ensure_installed = {
-  			"lua-language-server",
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "ansible-language-server",
+        "lua-language-server",
         "stylua",
-  			"html-lsp",
+        "html-lsp",
         "css-lsp",
         "prettier",
         "yaml-language-server",
         "typescript-language-server",
-        "kotlin-language-server"
-  		},
-  	},
+        "kotlin-language-server",
+      },
+    },
   },
   --
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim",
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
         "lua",
         "vimdoc",
         "html",
         "css",
         "kotlin",
-  		},
-  	},
+      },
+    },
   },
 
   {
-    'nvimdev/lspsaga.nvim',
+    "nvimdev/lspsaga.nvim",
     config = function()
-      require('lspsaga').setup({})
+      require("lspsaga").setup {}
     end,
     event = "LspAttach",
     dependencies = {
-      'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons',     -- optional
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
+  },
+
+  {
+    "pearofducks/ansible-vim",
+    ft = "yaml.ansible",
+    dependencies = {
+      --"nvim-treesitter/nvim-treesitter", -- optional
     },
   },
 }
