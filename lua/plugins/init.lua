@@ -43,6 +43,7 @@ return {
         "html",
         "css",
         "kotlin",
+        "yaml",
       },
     },
   },
@@ -60,10 +61,11 @@ return {
   },
 
   {
-    "pearofducks/ansible-vim",
-    ft = "yaml.ansible",
+    "cuducos/yaml.nvim",
+    ft = { "yaml", "yaml.ansible" }, -- optional
     dependencies = {
-      --"nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
     },
   },
 }
