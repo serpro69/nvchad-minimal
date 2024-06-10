@@ -38,4 +38,4 @@ vim.schedule(function()
   require "mappings"
 end)
 
-require "configs.yaml"
+require "configs.yaml_ansible"

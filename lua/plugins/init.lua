@@ -44,6 +44,7 @@ return {
         "css",
         "kotlin",
         "yaml",
+        "twig", -- an alternative to jinja since they're very similar
       },
     },
   },
