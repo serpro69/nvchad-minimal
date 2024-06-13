@@ -21,6 +21,7 @@ return {
     opts = {
       ensure_installed = {
         "ansible-language-server",
+        "ansible-lint",
         "lua-language-server",
         "stylua",
         "html-lsp",
