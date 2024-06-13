@@ -1,10 +1,16 @@
--- EXAMPLE 
+-- EXAMPLE
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "ansiblels", "html", "cssls" }
+local servers = {
+  "ansiblels",
+  "cssls",
+  "dockerls",
+  "docker_compose_language_service",
+  "html",
+}
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -36,7 +42,7 @@ lspconfig.yamlls.setup {
         },
       },
     },
-  }
+  },
 }
 
 --[[ lspconfig.kotlin_language_server.setup {
@@ -57,15 +63,15 @@ lspconfig.kotlin_language_server.setup {
   -- https://github.com/fwcd/kotlin-language-server/issues/559#issuecomment-2002050294
   -- https://github.com/AlexandrosAlexiou/.dotfiles/blob/eab23f91aad9fcc4e5c0c65e0f4f8cf6a968f7d6/nvim/lua/tt/_plugins/lsp/config/servers.lua#L38-L40
   root_dir = function()
-      return vim.fn.getcwd()
+    return vim.fn.getcwd()
   end,
   settings = {
     kotlin = {
       compiler = {
         jvm = {
-          target = "21"
-        }
-      }
+          target = "21",
+        },
+      },
     },
     hints = {
       typeHints = true,
