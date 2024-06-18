@@ -38,4 +38,5 @@ vim.schedule(function()
   require "mappings"
 end)
 
+require "configs.telescope"
 require "configs.yaml_ansible"
