@@ -4,12 +4,14 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
+-- :Mason to see available servers
 local servers = {
   "ansiblels",
   "cssls",
   "dockerls",
   "docker_compose_language_service",
   "html",
+  "terraformls",
 }
 
 -- lsps with default config
