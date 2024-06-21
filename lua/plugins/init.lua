@@ -77,4 +77,32 @@ return {
       "nvim-telescope/telescope.nvim", -- optional
     },
   },
+
+  {
+    "Exafunction/codeium.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    event = "BufEnter",
+    config = function()
+      require("codeium").setup {}
+    end,
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      {
+        "Exafunction/codeium.nvim",
+        config = true,
+      },
+    },
+
+    config = function(_, opts)
+      table.insert(opts.sources, 1, { name = "codeium" })
+      require("cmp").setup(opts)
+    end,
+  },
+
 }
