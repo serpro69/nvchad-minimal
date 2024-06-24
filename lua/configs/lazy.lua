@@ -2,6 +2,18 @@ return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
 
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = true,
+    notify = false, -- get a notification when changes are found
+  },
+
+  lockfile = vim.fn.stdpath "data" .. "/lazy-lock.json",
+
+  diff = {
+    cmd = "diffview.nvim",
+  },
+
   ui = {
     icons = {
       ft = "",
