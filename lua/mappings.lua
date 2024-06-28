@@ -12,7 +12,8 @@ map("n", "<leader>lh", "<cmd>Lspsaga hover_doc<CR>", { desc = "Lspsaga open docu
 map("n", "<leader>lt", "<cmd>Lspsaga term_toggle<CR>", { desc = "Lspsaga open floating terminal" })
 map("n", "<leader>lc", "<cmd>Lspsaga code_action<CR>", { desc = "Lspsaga run code-action" })
 
-map("n", "<leader>cx", function()
+map("n", "<leader>xx", "<cmd>buffer close<CR>", { desc = "Buffer close" })
+map("n", "<leader>xa", function()
   require("nvchad.tabufline").closeAllBufs()
 end, { desc = "Buffer close all" })
 
