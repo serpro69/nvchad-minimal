@@ -28,6 +28,7 @@ return {
         "html-lsp",
         "kotlin-language-server",
         "lua-language-server",
+        "marksman",
         "stylua",
         "prettier",
         "terraform-ls",
