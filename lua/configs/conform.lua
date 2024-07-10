@@ -3,7 +3,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     lua = { "stylua" },
-    tf = { "tflint", "tfsec" },
+    tf = { "tflint", "trivy" },
   },
 
   format_on_save = {

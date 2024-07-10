@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
@@ -22,6 +22,7 @@ return {
       ensure_installed = {
         "ansible-language-server",
         "ansible-lint",
+        "autotools-language-server",
         "css-lsp",
         "dockerfile-language-server",
         "docker-compose-language-service",
@@ -33,7 +34,8 @@ return {
         "prettier",
         "terraform-ls",
         "tflint",
-        "tfsec",
+        -- "tfsec", -- replaced by trivy
+        "trivy",
         "typescript-language-server",
         "yaml-language-server",
       },
@@ -49,6 +51,7 @@ return {
         "html",
         "kotlin",
         "lua",
+        "make",
         "terraform",
         "twig", -- an alternative to jinja since they're very similar
         "vim",
@@ -105,5 +108,4 @@ return {
       require("cmp").setup(opts)
     end,
   },
-
 }

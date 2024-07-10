@@ -7,6 +7,7 @@ local lspconfig = require "lspconfig"
 -- :Mason to see available servers
 local servers = {
   "ansiblels",
+  "autotools_ls",
   "cssls",
   "dockerls",
   "docker_compose_language_service",
