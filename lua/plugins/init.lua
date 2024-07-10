@@ -108,4 +108,21 @@ return {
       require("cmp").setup(opts)
     end,
   },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    event = "BufEnter",
+    opts = {
+      highlight = {
+        -- NB! don't match w/o extra colon, search via telescope and other tools won't be able to find the comments
+        -- pattern = [[.*<(KEYWORDS)\s*]],
+      },
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- ref: https://github.com/folke/todo-comments.nvim?tab=readme-ov-file#%EF%B8%8F-configuration
+    },
+  },
 }
