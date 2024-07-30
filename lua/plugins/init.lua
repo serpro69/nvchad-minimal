@@ -26,6 +26,11 @@ return {
         "css-lsp",
         "dockerfile-language-server",
         "docker-compose-language-service",
+        "goimports",
+        "goimports-reviser",
+        "golangci-lint",
+        "golangci-lint-langserver",
+        "gopls",
         "html-lsp",
         "kotlin-language-server",
         "lua-language-server",
@@ -82,29 +87,29 @@ return {
     },
   },
 
-  {
-    "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    event = "BufEnter",
-    config = function()
-      require("codeium").setup {}
-    end,
-  },
+  -- {
+  --   "Exafunction/codeium.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  --   event = "BufEnter",
+  --   config = function()
+  --     require("codeium").setup {}
+  --   end,
+  -- },
 
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      {
-        "Exafunction/codeium.nvim",
-        config = true,
-      },
+      -- {
+      --   "Exafunction/codeium.nvim",
+      --   config = true,
+      -- },
     },
 
     config = function(_, opts)
-      table.insert(opts.sources, 1, { name = "codeium" })
+      -- table.insert(opts.sources, 1, { name = "codeium" })
       require("cmp").setup(opts)
     end,
   },
@@ -125,4 +130,55 @@ return {
       -- ref: https://github.com/folke/todo-comments.nvim?tab=readme-ov-file#%EF%B8%8F-configuration
     },
   },
+
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "nvim-telescope/telescope.nvim", -- Optional
+  --     -- {
+  --     --   "stevearc/dressing.nvim", -- Optional: Improves the default Neovim UI
+  --     --   opts = {},
+  --     -- },
+  --   },
+  --   event = "BufEnter",
+  --   config = function()
+  --     require("codecompanion").setup {
+  --       adapters = {
+  --         llama3 = require("codecompanion.adapters").use("ollama", {
+  --           schema = {
+  --             model = {
+  --               default = "llama3.1",
+  --             },
+  --             num_ctx = {
+  --               default = 16384,
+  --             },
+  --             num_predict = {
+  --               default = -1,
+  --             },
+  --           },
+  --         }),
+  --         codegemma = require("codecompanion.adapters").use("ollama", {
+  --           schema = {
+  --             model = {
+  --               default = "codegemma",
+  --             },
+  --           },
+  --         }),
+  --       },
+  --       strategies = {
+  --         chat = {
+  --           adapter = "llama3",
+  --         },
+  --         inline = {
+  --           adapter = "codegemma",
+  --         },
+  --         agent = {
+  --           adapter = "llama3",
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
 }

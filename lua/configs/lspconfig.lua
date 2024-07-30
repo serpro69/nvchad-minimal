@@ -11,6 +11,7 @@ local servers = {
   "cssls",
   "dockerls",
   "docker_compose_language_service",
+  "gopls",
   "html",
   "marksman",
   "terraformls",
