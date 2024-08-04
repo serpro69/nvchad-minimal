@@ -69,7 +69,11 @@ return {
   {
     "nvimdev/lspsaga.nvim",
     config = function()
-      require("lspsaga").setup {}
+      require("lspsaga").setup {
+        code_action = {
+          extend_gitsigns = true,
+        },
+      }
     end,
     event = "LspAttach",
     dependencies = {
@@ -129,6 +133,37 @@ return {
       -- or leave it empty to use the default settings
       -- ref: https://github.com/folke/todo-comments.nvim?tab=readme-ov-file#%EF%B8%8F-configuration
     },
+  },
+
+  {
+    -- custom telescope configs
+    -- https://nvchad.com/docs/config/plugins
+    "nvim-telescope/telescope.nvim",
+    opts = function()
+      local conf = require "nvchad.configs.telescope"
+
+      -- conf.defaults.mappings.i = {
+      --   ["<C-j>"] = require("telescope.actions").move_selection_next,
+      --   ["<Esc>"] = require("telescope.actions").close,
+      -- }
+
+      -- or
+      -- table.insert(conf.defaults.mappings.i, your table)
+
+      conf.extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown {
+            -- even more opts
+          },
+        },
+      }
+
+      return conf
+    end,
+  },
+
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
   },
 
   -- {
