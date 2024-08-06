@@ -18,3 +18,9 @@ map("n", "<leader>xa", function()
 end, { desc = "Buffer close all" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+-- custom commands
+
+vim.api.nvim_create_user_command("NvShades", function()
+  require("nvchad.shades").open()
+end, {})
