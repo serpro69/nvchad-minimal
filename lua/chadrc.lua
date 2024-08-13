@@ -246,4 +246,10 @@ M.base46 = {
 -- check core.mappings for table structure
 -- M.mappings = require "mappings"
 
+-- Disable signature help because it conflicts with folke/noice.nvim plugin
+-- TODO: might want to look at some advanced setup here https://github.com/Alexis12119/nvim-config/blob/main/lua/plugins/noice.lua
+M.lsp = {
+  signature = false,
+}
+
 return M
