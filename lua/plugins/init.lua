@@ -52,6 +52,11 @@ return {
     opts = {
       ensure_installed = {
         "css",
+        "go",
+        "gomod",
+        "gosum",
+        "gotmpl",
+        "gowork",
         "hcl",
         "html",
         "kotlin",
