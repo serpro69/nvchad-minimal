@@ -18,14 +18,51 @@ return {
   --
   {
     "williamboman/mason.nvim",
+    event = "User FilePost",
     opts = {
+      registries = {
+        "github:nvim-java/mason-registry",
+        "github:mason-org/mason-registry",
+      },
+      init = function()
+        vim.keymap.set("n", "<leader>lm", "<cmd>Mason<cr>", { desc = "Mason | Installer", silent = true })
+      end,
+      cmd = {
+        "Mason",
+        "MasonInstall",
+        "MasonInstallAll",
+        "MasonUpdate",
+        "MasonUninstall",
+        "MasonUninstallAll",
+        "MasonLog",
+      },
+      dependencies = {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+          local mason = require "mason"
+          mason.setup {
+            ui = {
+              border = vim.g.border_enabled and "rounded" or "none",
+              -- Whether to automatically check for new versions when opening the :Mason window.
+              check_outdated_packages_on_open = false,
+              icons = {
+                package_pending = " ",
+                package_installed = " ",
+                package_uninstalled = " ",
+              },
+            },
+          }
+        end,
+      },
       ensure_installed = {
         "ansible-language-server",
         "ansible-lint",
         "autotools-language-server",
         "css-lsp",
+        "delve",
         "dockerfile-language-server",
         "docker-compose-language-service",
+        "go-debug-adapter",
         "goimports",
         "goimports-reviser",
         "golangci-lint",
@@ -206,6 +243,48 @@ return {
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
+    },
+  },
+
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      {
+        "rcarriga/nvim-dap-ui",
+        "nvim-neotest/nvim-nio",
+        config = function(_, opts)
+          local dap = require "dap"
+          local dapui = require "dapui"
+          dapui.setup(opts)
+          dap.listeners.after.event_initialized["dapui_config"] = function()
+            dapui.open {}
+          end
+          dap.listeners.before.event_terminated["dapui_config"] = function()
+            dapui.close {}
+          end
+          dap.listeners.before.event_exited["dapui_config"] = function()
+            dapui.close {}
+          end
+        end,
+      },
+      {
+        "leoluz/nvim-dap-go",
+        config = function()
+          require("dap-go").setup()
+        end,
+      },
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = "mason.nvim",
+        cmd = { "DapInstall", "DapUninstall" },
+        opts = {
+          automatic_installation = true,
+          handlers = {},
+          ensure_installed = {
+            "delve",
+          },
+        },
+      },
     },
   },
 
